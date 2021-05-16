@@ -27,9 +27,9 @@ public class CompanyController {
     }
 
     @PostMapping("/")
-    void createCompany(@RequestBody CompanyDto companyDto) {
+    CompanyDto createCompany(@RequestBody CompanyDto companyDto) {
         companyService.save(convertToEntity(companyDto));
-
+        return companyDto;
     }
 
     private CompanyEntity convertToEntity(CompanyDto companyDto) {
