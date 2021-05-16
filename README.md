@@ -17,7 +17,7 @@ Service starts at `http://localhost:8080`
 Save company details:
 ```
 POST /
-
+body:
 {
     "msg_id": 1,
     "company_name": "acme company",
@@ -32,7 +32,7 @@ Get company details:
 
 ```
 GET /
-
+result:
 [
     {
         "msg_id": 1,
