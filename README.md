@@ -11,6 +11,12 @@ mvn spring-boot:run
 
 Service starts at `http://localhost:8080`
 
+### Run integration and unit tests
+
+```
+mvn test
+```
+
 ### Sample requests
 
 
