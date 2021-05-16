@@ -3,7 +3,16 @@ company service
 
 Spring boot app that reads requests to `POST /` with json payload containing company details, and stores it in DB
 
-sample requests
+### Start service
+
+```
+mvn spring-boot:run
+```
+
+Service starts at `http://localhost:8080`
+
+### Sample requests
+
 
 Save company details:
 ```
