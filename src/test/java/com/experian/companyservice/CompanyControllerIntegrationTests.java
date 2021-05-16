@@ -1,6 +1,5 @@
 package com.experian.companyservice;
 
-import com.experian.companyservice.repository.CompanyRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +27,8 @@ public class CompanyControllerIntegrationTests {
     @Autowired
     private MockMvc mvc;
 
-    @Autowired
-    private CompanyRepository repository;
-
-    // write test cases here
-
     @Test
-    public void givenEmployees_whenGetEmployees_thenStatus200()
+    public void createTestCompany()
             throws Exception {
 
         createTestCompany(1,
@@ -50,6 +44,74 @@ public class CompanyControllerIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(content()
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.length()", is(1)))
+                .andExpect(jsonPath("$[0].company_name", is("bob's geldofs")))
+                .andExpect(jsonPath("$[0].msg_id", is(1)));
+    }
+
+    @Test
+    public void updatingExistingCompanyUpdatesRecord()
+            throws Exception {
+
+        createTestCompany(1,
+                "bob's geldofs",
+                "2020-10-27T14:34:06.132Z",
+                3.2f,
+                5,
+                "2020-12-27T14:34:06.132Z"
+        );
+
+        mvc.perform(get("/")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content()
+                        .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$[0].company_name", is("bob's geldofs")))
+                .andExpect(jsonPath("$[0].msg_id", is(1)));
+
+        createTestCompany(1,
+                "bob's geldofs2",
+                "2020-10-27T14:34:06.132Z",
+                5.2f,
+                5,
+                "2020-12-27T14:34:06.132Z"
+        );
+
+        mvc.perform(get("/")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content()
+                        .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$[0].company_name", is("bob's geldofs2")))
+                .andExpect(jsonPath("$[0].msg_id", is(1)));
+    }
+
+    @Test
+    public void createTwoCompanies()
+            throws Exception {
+
+        createTestCompany(1,
+                "bob's geldofs",
+                "2020-10-27T14:34:06.132Z",
+                3.2f,
+                5,
+                "2020-12-27T14:34:06.132Z"
+        );
+
+        createTestCompany(2,
+                "dave's hasselhoffs",
+                "2020-10-27T14:34:06.132Z",
+                2.3f,
+                7,
+                "2020-12-27T14:34:06.132Z"
+        );
+
+        mvc.perform(get("/")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content()
+                        .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.length()", is(2)))
                 .andExpect(jsonPath("$[0].company_name", is("bob's geldofs")))
                 .andExpect(jsonPath("$[0].msg_id", is(1)));
     }
@@ -71,4 +133,7 @@ public class CompanyControllerIntegrationTests {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
+
+
+
 }
