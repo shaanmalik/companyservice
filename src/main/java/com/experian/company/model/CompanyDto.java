@@ -1,4 +1,4 @@
-package com.experian.companyservice.model;
+package com.experian.company.model;
 
 import java.time.OffsetDateTime;
 

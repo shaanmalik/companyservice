@@ -1,6 +1,6 @@
-package com.experian.companyservice;
+package com.experian.company;
 
-import com.experian.companyservice.repository.CompanyRepository;
+import com.experian.company.repository.CompanyRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(
         webEnvironment = SpringBootTest.WebEnvironment.MOCK,
-        classes = CompanyserviceApplication.class)
+        classes = CompanyApplication.class)
 @AutoConfigureMockMvc
 @TestPropertySource(
         locations = "classpath:application-integrationtest.properties")

@@ -1,8 +1,8 @@
-package com.experian.companyservice;
+package com.experian.company;
 
-import com.experian.companyservice.model.CompanyDto;
-import com.experian.companyservice.model.CompanyEntity;
-import com.experian.companyservice.service.CompanyService;
+import com.experian.company.model.CompanyDto;
+import com.experian.company.model.CompanyEntity;
+import com.experian.company.service.CompanyService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +17,6 @@ public class CompanyController {
     private CompanyService companyService;
 
     public CompanyController(CompanyService companyService) {
-
         this.companyService = companyService;
     }
 

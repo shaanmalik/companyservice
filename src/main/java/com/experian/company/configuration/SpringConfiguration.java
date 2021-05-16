@@ -1,4 +1,4 @@
-package com.experian.companyservice.configuration;
+package com.experian.company.configuration;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

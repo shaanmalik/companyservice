@@ -1,13 +1,13 @@
-package com.experian.companyservice;
+package com.experian.company;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CompanyserviceApplication {
+public class CompanyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CompanyserviceApplication.class, args);
+		SpringApplication.run(CompanyApplication.class, args);
 	}
 
 }

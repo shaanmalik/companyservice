@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.experian</groupId>
-	<artifactId>companyservice</artifactId>
+	<artifactId>experian-companyapidemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>companyservice</name>
+	<name>experian-companyapidemo</name>
 	<description>
 		Demo project for experian interview.
 		Receives company details from HTTP endpoint and saves to database

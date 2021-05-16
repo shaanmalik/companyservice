@@ -1,4 +1,4 @@
-package com.experian.companyservice.model;
+package com.experian.company.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

@@ -1,8 +1,7 @@
-package com.experian.companyservice.service;
+package com.experian.company.service;
 
-import com.experian.companyservice.model.CompanyDto;
-import com.experian.companyservice.model.CompanyEntity;
-import com.experian.companyservice.repository.CompanyRepository;
+import com.experian.company.model.CompanyEntity;
+import com.experian.company.repository.CompanyRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
