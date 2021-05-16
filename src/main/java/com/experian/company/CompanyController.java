@@ -1,5 +1,6 @@
 package com.experian.company;
 
+import com.experian.company.converter.ModelConverter;
 import com.experian.company.model.CompanyDto;
 import com.experian.company.model.CompanyEntity;
 import com.experian.company.service.CompanyService;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.experian.company.converter.ModelConverter.convertToEntity;
 
 @RestController
 public class CompanyController {
@@ -22,7 +25,9 @@ public class CompanyController {
 
     @GetMapping("/")
     List<CompanyDto> getCompanies() {
-        return companyService.getCompanies().stream().map(this::convertToDto).collect(Collectors.toList());
+        return companyService.getCompanies().stream()
+                .map(ModelConverter::convertToDto)
+                .collect(Collectors.toList());
     }
 
     @PostMapping("/")
@@ -31,29 +36,7 @@ public class CompanyController {
         return companyDto;
     }
 
-    private CompanyEntity convertToEntity(CompanyDto companyDto) {
 
-        CompanyEntity companyEntity = new CompanyEntity();
-        companyEntity.setMsg_id((long) companyDto.getMsg_id());
-        companyEntity.setCompany_name(companyDto.getCompany_name());
-        companyEntity.setDirectors_count(companyDto.getDirectors_count());
-        companyEntity.setRegistration_date(companyDto.getRegistration_date());
-        companyEntity.setScore(companyDto.getScore());
-        companyEntity.setLast_updated(companyDto.getLast_updated());
-        return companyEntity;
-    }
-
-    private CompanyDto convertToDto(CompanyEntity companyEntity) {
-        CompanyDto companyDto = new CompanyDto();
-        companyDto.setMsg_id(companyEntity.getMsg_id().intValue());
-        companyDto.setCompany_name(companyEntity.getCompany_name());
-        companyDto.setDirectors_count(companyEntity.getDirectors_count());
-        companyDto.setRegistration_date(companyEntity.getRegistration_date());
-        companyDto.setScore(companyEntity.getScore());
-        companyDto.setLast_updated(companyEntity.getLast_updated());
-        return companyDto;
-
-    }
 
 }
 
