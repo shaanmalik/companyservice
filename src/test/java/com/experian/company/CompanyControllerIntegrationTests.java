@@ -42,7 +42,7 @@ public class CompanyControllerIntegrationTests {
             throws Exception {
 
         createTestCompany(1,
-                "bob's geldofs",
+                "acme company",
                 "2020-10-27T14:34:06.132Z",
         3.2f,
                 5,
@@ -55,7 +55,7 @@ public class CompanyControllerIntegrationTests {
                 .andExpect(content()
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.length()", is(1)))
-                .andExpect(jsonPath("$[0].company_name", is("bob's geldofs")))
+                .andExpect(jsonPath("$[0].company_name", is("acme company")))
                 .andExpect(jsonPath("$[0].msg_id", is(1)));
     }
 
@@ -64,7 +64,7 @@ public class CompanyControllerIntegrationTests {
             throws Exception {
 
         createTestCompany(1,
-                "bob's geldofs",
+                "acme company",
                 "2020-10-27T14:34:06.132Z",
                 3.2f,
                 5,
@@ -76,11 +76,11 @@ public class CompanyControllerIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(content()
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$[0].company_name", is("bob's geldofs")))
+                .andExpect(jsonPath("$[0].company_name", is("acme company")))
                 .andExpect(jsonPath("$[0].msg_id", is(1)));
 
         createTestCompany(1,
-                "bob's geldofs2",
+                "acme company2",
                 "2020-10-27T14:34:06.132Z",
                 5.2f,
                 5,
@@ -92,7 +92,7 @@ public class CompanyControllerIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(content()
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$[0].company_name", is("bob's geldofs2")))
+                .andExpect(jsonPath("$[0].company_name", is("acme company2")))
                 .andExpect(jsonPath("$[0].msg_id", is(1)));
     }
 
@@ -101,7 +101,7 @@ public class CompanyControllerIntegrationTests {
             throws Exception {
 
         createTestCompany(1,
-                "bob's geldofs",
+                "acme company",
                 "2020-10-27T14:34:06.132Z",
                 3.2f,
                 5,
@@ -109,7 +109,7 @@ public class CompanyControllerIntegrationTests {
         );
 
         createTestCompany(2,
-                "david's hasselhoffs",
+                "abcd company",
                 "2020-10-27T14:34:06.132Z",
                 2.3f,
                 7,
@@ -123,9 +123,9 @@ public class CompanyControllerIntegrationTests {
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.length()", is(2)))
                 .andExpect(jsonPath("$[0].msg_id", is(1)))
-                .andExpect(jsonPath("$[0].company_name", is("bob's geldofs")))
+                .andExpect(jsonPath("$[0].company_name", is("acme company")))
                 .andExpect(jsonPath("$[1].msg_id", is(2)))
-                .andExpect(jsonPath("$[1].company_name", is("david's hasselhoffs")));
+                .andExpect(jsonPath("$[1].company_name", is("abcd company")));
     }
 
     private void createTestCompany(int msg_id,
